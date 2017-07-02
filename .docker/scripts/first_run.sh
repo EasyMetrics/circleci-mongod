@@ -37,6 +37,23 @@ fi
 
 echo "MongoDB users and roles are set...."
 
+
+# Load MongoDB Seed Data
+# ...
+echo "Starting MongoDB data seed...."
+DATA_FILES=/mongo_data/
+FILES=/mongo_data/*
+if [ -d "$DATA_FILES" ]; then
+  for f in $FILES
+  do
+    echo "Importing $f data..."
+      /usr/bin/mongoimport --db $DB --collection users --type json --drop --file $f --jsonArray
+    cat $f
+  done
+fi
+echo "Completed MongoDB data seed...."
+
+
 # Shutdown MongoDB service
 # ...
 echo "Shutting down MongoDB...."
