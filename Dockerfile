@@ -13,7 +13,6 @@ COPY ./.docker/scripts /mongo_scripts
 # Set execution permissions on scripts
 # ...
 RUN chmod +rx /mongo_scripts/*.sh
-RUN touch /.firstrun
 
 EXPOSE 27017
 
